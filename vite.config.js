@@ -30,6 +30,11 @@ export default defineConfig({
                 target: 'http://dev.autotest.com:8801',
                 changeOrigin: true,
                 allowCookies: true
+            },
+            '/public': {
+                target: 'http://dev.autotest.com:8801',
+                changeOrigin: true,
+                allowCookies: true
             }
         }
     }

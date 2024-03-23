@@ -74,13 +74,23 @@ export const useHistoryStore = defineStore('history', {
                     }
                 }
             );
+            const history = {
+                id: res.id,
+                startAt: new Date(res.start_at),
+                endAt: res.end_at ? new Date(res.end_at) : '',
+                status: res.status,
+                reporterLink: res.reporter_link,
+                detailLink: res.detail_link,
+                compareLink: res.compare_link,
+                triggerUser: res.user.username
+            };
             const one = this.list.find((i) => {
                 return i.id === historyId;
             });
             if (!one) {
                 return;
             }
-            Object.assign(one, res);
+            Object.assign(one, history);
         }
     }
 });

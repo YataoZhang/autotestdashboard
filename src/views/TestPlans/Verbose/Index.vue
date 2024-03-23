@@ -71,7 +71,10 @@
                         历史执行记录
                     </span>
                 </template>
-                <History :planId="$route.params.id"></History>
+                <History
+                    ref="historyListRef"
+                    :planId="$route.params.id"
+                ></History>
             </a-tab-pane>
         </a-tabs>
     </a-flex>
@@ -101,11 +104,13 @@ const activeKey = ref('1');
 const execute = ref(null);
 const currentPlanName = ref('');
 const caseListRef = ref(null);
+const historyListRef = ref(null);
 
 const $methods = {
     copyPlanId() {},
     onInvokeComplete() {
         activeKey.value = '2';
+        historyListRef.value && historyListRef.value.refreshHistoryList();
     },
     async onAddComplete() {
         await caseListRef.value.refreshList();

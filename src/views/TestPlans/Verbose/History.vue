@@ -21,15 +21,18 @@
                 {{ formatDates(record.endAt) }}
             </template>
             <template v-if="column.key === 'status'">
-                <a-tag :color="['blue', 'orange', 'green', 'red'][record.status]">
+                <a-tag
+                    :color="['blue', 'orange', 'green', 'red'][record.status]"
+                >
                     <template
                         #icon
-                        v-if="record.status === 0"
+                        v-if="record.status === 1"
                     >
                         <LoadingOutlined />
                     </template>
                     {{
-                        ['未开始', '测试中', '成功', '失败'][record.status] || '未知状态'
+                        ['未开始', '测试中', '成功', '失败'][record.status] ||
+                        '未知状态'
                     }}
                 </a-tag>
             </template>
@@ -39,21 +42,25 @@
             <template v-if="column.key === 'reporter'">
                 <a-button
                     type="link"
+                    target="_blank"
+                    :disabled="record.status < 2 || !record.detailLink"
                     :href="record.detailLink"
                 >
                     查看详情
                 </a-button>
                 <a-button
-                    :disabled="record.status < 2"
+                    :disabled="record.status < 2 || !record.reporterLink"
                     type="link"
+                    target="_blank"
                     :href="record.reporterLink"
                 >
                     测试报告
                 </a-button>
 
                 <a-button
-                    :disabled="record.status < 2"
+                    :disabled="record.status < 2 || !record.compareLink"
                     type="link"
+                    target="_blank"
                     :href="record.compareLink"
                 >
                     对比详情
@@ -147,6 +154,12 @@ const $actions = {
 
 onMounted(() => {
     $actions.getAllHistoryList();
+});
+
+defineExpose({
+    async refreshHistoryList() {
+        $actions.getAllHistoryList();
+    }
 });
 </script>
 

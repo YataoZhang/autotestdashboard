@@ -8,8 +8,8 @@
                 v-model:value="protocol"
                 style="width: 90px"
             >
-                <a-select-option value="Http://">Http://</a-select-option>
-                <a-select-option value="Https://">Https://</a-select-option>
+                <a-select-option value="http://">http://</a-select-option>
+                <a-select-option value="https://">https://</a-select-option>
             </a-select>
         </template>
         <template #addonAfter>
@@ -26,7 +26,7 @@
 </template>
 <script setup>
 import { ref } from 'vue';
-const protocol = ref('Http://');
+const protocol = ref('http://');
 const suffix = ref('.com');
 const hostValue = ref('');
 
@@ -38,7 +38,7 @@ defineExpose({
         return protocol.value + hostValue.value + suffix.value;
     },
     reset() {
-        protocol.value = 'Http://';
+        protocol.value = 'http://';
         suffix.value = '.com';
         hostValue.value = '';
     }
