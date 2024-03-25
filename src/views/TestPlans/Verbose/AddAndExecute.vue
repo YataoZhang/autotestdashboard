@@ -57,7 +57,7 @@ const $props = defineProps({
         type: [Number, String]
     }
 });
-const $emits = defineEmits(['onInvokeComplete']);
+const $emits = defineEmits(['onInvokeComplete', 'onAddComplete']);
 
 const $teamStore = useTeamStore();
 const fileList = ref([]);

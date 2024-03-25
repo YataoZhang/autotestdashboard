@@ -167,7 +167,7 @@ const $methods = {
     invokeTest(record) {
         $router.push({
             name: 'plans_verbose',
-            params: { id: record.key },
+            params: { id: record.id },
             query: {
                 invoke: 1
             }

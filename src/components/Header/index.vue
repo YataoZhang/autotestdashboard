@@ -37,7 +37,7 @@ import {
     FolderOpenOutlined,
     TeamOutlined,
     SettingOutlined,
-    ApiOutlined,
+    ApiOutlined
 } from '@ant-design/icons-vue';
 
 import User from './User.vue';
@@ -54,7 +54,7 @@ const changeMenu = (event) => {
 
 function setSelectedKeys(routeName) {
     if (/plans/.test(routeName)) {
-        selectedKeys.value[0] = 'plans_home';
+        selectedKeys.value[0] = 'plans';
     } else {
         selectedKeys.value[0] = 'team';
     }
